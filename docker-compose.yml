@@ -1,0 +1,8 @@
+version: '2.4'
+
+services:
+  php-7.4:
+    build:
+      context: php
+      dockerfile: Dockerfile-7.4
+    image: ghcr.io/h0riz0ns/php:7.4-onbuild
