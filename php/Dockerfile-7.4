@@ -6,6 +6,11 @@ FROM composer:2.2.6 AS composer
 
 FROM alpine:3.15.4
 
+LABEL \
+  org.opencontainers.image.authors="Fabien Schurter <dev@fabschurt.com>" \
+  org.opencontainers.image.licenses="MIT" \
+  org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
+
 STOPSIGNAL SIGQUIT
 
 RUN \

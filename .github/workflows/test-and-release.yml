@@ -1,0 +1,24 @@
+name: Test & release
+
+on:
+  push:
+    branches: master
+
+concurrency:
+  group: test-and-release
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker-compose build --progress plain
+      - run: docker-compose push
