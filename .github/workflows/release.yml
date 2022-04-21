@@ -1,11 +1,11 @@
-name: Test & release
-
 on:
   push:
     branches: master
+    paths:
+      - /php/**
 
 concurrency:
-  group: test-and-release
+  group: release
   cancel-in-progress: true
 
 jobs:
@@ -20,5 +20,4 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker-compose build --progress plain
-      - run: docker-compose push
+      - run: make release
