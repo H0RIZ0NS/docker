@@ -1,6 +1,9 @@
+name: Tests and QA checks
+
 on:
   push:
-    branches: '!master'
+    branches-ignore:
+      - master
 
 concurrency:
   group: test--${{ github.ref }}
