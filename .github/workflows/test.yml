@@ -1,0 +1,14 @@
+on:
+  push:
+    branches: '!master'
+
+concurrency:
+  group: test--${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - run: make build
