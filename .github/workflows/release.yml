@@ -5,8 +5,9 @@ on:
     branches:
       - master
     paths:
-      - /docker-compose.yml
-      - /php/**
+      - docker-compose.yml
+      - php/**
+      - node/**
 
 concurrency:
   group: release
