@@ -1,12 +1,11 @@
 export SHELL := /usr/bin/env bash -Eeu -o pipefail
-export DOCKER_BUILDKIT := 1
 
 test.build test.run: export COMPOSE_FILE=docker-compose.test.yml
 release: export COMPOSE_FILE=docker-compose.release.yml
 
 .PHONY: build
 build:
-	docker compose build $$([[ "$${CI:-}" == 'true' ]] && echo '--progress plain')
+	docker compose build
 
 .PHONY: test.build
 test.build:
