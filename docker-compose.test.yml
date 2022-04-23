@@ -5,7 +5,16 @@ services:
     build:
       context: php
       dockerfile: php7.Dockerfile
+      target: cli
     image: tests/php:7-base
+    profiles: [base]
+
+  php7-fpm-base:
+    build:
+      context: php
+      dockerfile: php7.Dockerfile
+      target: fpm
+    image: tests/php:7-fpm-base
     profiles: [base]
 
   node16-base:
@@ -18,7 +27,15 @@ services:
   php7-test:
     build:
       dockerfile: _tests/php7.Dockerfile
+      target: cli
     image: tests/php:7-test
+    profiles: [test]
+
+  php7-fpm-test:
+    build:
+      dockerfile: _tests/php7.Dockerfile
+      target: fpm
+    image: tests/php:7-fpm-test
     profiles: [test]
 
   node16-test:
