@@ -15,7 +15,6 @@ test.build:
 .PHONY: test.run
 test.run:
 	docker compose run --rm php7-test
-	docker compose run --rm php7-fpm-test
 	docker compose run --rm node16-test
 
 .PHONY: release

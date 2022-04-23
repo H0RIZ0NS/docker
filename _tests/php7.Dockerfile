@@ -1,17 +1,4 @@
-########################################################################
-
-FROM tests/php:7-base AS cli
-
-CMD \
-  set -x && \
-  [ "$(whoami)" = 'php' ] && \
-  [ "$(pwd)" = '/opt/app' ] && \
-  php --version && \
-  composer --version
-
-########################################################################
-
-FROM tests/php:7-fpm-base AS fpm
+FROM tests/php:7-base
 
 CMD \
   set -x && \
@@ -20,5 +7,3 @@ CMD \
   php --version && \
   php-fpm7 --version && \
   composer --version
-
-########################################################################

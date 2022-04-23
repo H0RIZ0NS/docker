@@ -4,7 +4,7 @@ FROM composer:2.2.6 AS composer
 
 ########################################################################
 
-FROM alpine:3.15.4 AS base
+FROM alpine:3.15.4
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter <dev@fabschurt.com>" \
@@ -14,6 +14,7 @@ LABEL \
 RUN \
   apk add --no-cache \
     php7=7.4.28-r0 \
+    php7-fpm=7.4.28-r0 \
     php7-curl=7.4.28-r0 \
     php7-iconv=7.4.28-r0 \
     php7-mbstring=7.4.28-r0 \
@@ -25,35 +26,10 @@ RUN \
     tar=1.34-r0 \
     unzip=6.0-r9
 
-COPY config/php.ini /etc/php7/php.ini
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-########################################################################
-
-FROM base AS cli
-
-ONBUILD ARG RUNTIME_USER_ID=1000
-
-ONBUILD RUN \
-  adduser -u ${RUNTIME_USER_ID} -D -s /sbin/nologin php && \
-  mkdir /opt/app && \
-  chown -R php:php /opt/app
-
-ONBUILD WORKDIR /opt/app
-ONBUILD USER php
-
-########################################################################
-
-FROM base AS fpm
-
-CMD ["php-fpm7"]
-STOPSIGNAL SIGQUIT
-
-EXPOSE 9000
-
-RUN apk add --no-cache php7-fpm=7.4.28-r0
-
-COPY config/php-fpm.conf /etc/php7/php-fpm.conf
+RUN rm /etc/php7/php-fpm.d/*
+COPY config/* /etc/php7/
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 
