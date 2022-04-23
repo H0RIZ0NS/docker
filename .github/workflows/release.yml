@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - docker-compose.release.yml
+      - Makefile
       - php/**
       - node/**
 
