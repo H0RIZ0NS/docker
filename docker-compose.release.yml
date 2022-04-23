@@ -5,15 +5,7 @@ services:
     build:
       context: php
       dockerfile: php7.Dockerfile
-      target: cli
     image: ghcr.io/h0riz0ns/php:7-onbuild
-
-  php7-fpm:
-    build:
-      context: php
-      dockerfile: php7.Dockerfile
-      target: fpm
-    image: ghcr.io/h0riz0ns/php:7-fpm-onbuild
 
   node16:
     build:
