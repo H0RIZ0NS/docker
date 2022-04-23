@@ -10,8 +10,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - run: make build
+      - run: make test.build
+      - run: make test.run

@@ -1,0 +1,28 @@
+version: '2.4'
+
+services:
+  php7-base:
+    build:
+      context: php
+      dockerfile: php7.Dockerfile
+    image: tests/php:7-base
+    profiles: [base]
+
+  node16-base:
+    build:
+      context: node
+      dockerfile: node16.Dockerfile
+    image: tests/node:16-base
+    profiles: [base]
+
+  php7-test:
+    build:
+      dockerfile: _tests/php7.Dockerfile
+    image: tests/php:7-test
+    profiles: [test]
+
+  node16-test:
+    build:
+      dockerfile: _tests/node16.Dockerfile
+    image: tests/node:16-test
+    profiles: [test]

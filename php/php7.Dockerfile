@@ -11,12 +11,15 @@ LABEL \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
 
-STOPSIGNAL SIGQUIT
-
 RUN \
   apk add --no-cache \
     php7=7.4.28-r0 \
     php7-fpm=7.4.28-r0 \
+    php7-curl=7.4.28-r0 \
+    php7-iconv=7.4.28-r0 \
+    php7-mbstring=7.4.28-r0 \
+    php7-phar=7.4.28-r0 \
+    php7-zip=7.4.28-r0 \
     curl=7.80.0-r0 \
     git=2.34.2-r0 \
     gzip=1.12-r0 \
