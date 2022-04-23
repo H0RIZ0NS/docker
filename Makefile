@@ -19,5 +19,5 @@ test.run:
 	docker compose run --rm node16-test
 
 .PHONY: release
-release:
+release: build
 	docker compose push
