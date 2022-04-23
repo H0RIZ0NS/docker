@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - docker-compose.yml
+      - docker-compose.release.yml
       - php/**
       - node/**
 
@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  release:
+  build-and-push:
     runs-on: ubuntu-20.04
     permissions:
       packages: write
