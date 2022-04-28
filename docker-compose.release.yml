@@ -6,9 +6,15 @@ services:
       context: php
       dockerfile: php7.Dockerfile
     image: ghcr.io/h0riz0ns/php:7-onbuild
+    network_mode: none
+    deploy:
+      replicas: 0
 
   node16:
     build:
       context: node
       dockerfile: node16.Dockerfile
     image: ghcr.io/h0riz0ns/node:16-onbuild
+    network_mode: none
+    deploy:
+      replicas: 0
