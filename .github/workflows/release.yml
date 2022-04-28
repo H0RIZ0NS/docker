@@ -1,6 +1,15 @@
-name: Manual release
+name: Release
 
-on: workflow_dispatch
+on:
+  workflow_dispatch: ~
+  push:
+    branches:
+      - master
+    paths:
+      - docker-compose.release.yml
+      - Makefile
+      - php/**
+      - node/**
 
 concurrency:
   group: release
