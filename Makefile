@@ -9,8 +9,8 @@ build:
 
 .PHONY: test.build
 test.build:
-	COMPOSE_PROFILES=base $(MAKE) build
-	COMPOSE_PROFILES=test $(MAKE) build
+	COMPOSE_PROFILES=base ${MAKE} build
+	COMPOSE_PROFILES=test ${MAKE} build
 
 .PHONY: test.run
 test.run:
