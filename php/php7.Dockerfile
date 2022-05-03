@@ -33,7 +33,10 @@ RUN \
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-RUN rm /etc/php7/php-fpm.d/*
+RUN \
+  rm /etc/php7/php-fpm.d/* && \
+  ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm
+
 COPY config/* /etc/php7/
 
 ONBUILD ARG RUNTIME_USER_ID=1000

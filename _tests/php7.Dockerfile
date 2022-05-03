@@ -5,5 +5,5 @@ CMD \
   [ "$(whoami)" = 'php' ] && \
   [ "$(pwd)" = '/opt/app' ] && \
   php --version && \
-  php-fpm7 --version && \
+  php-fpm --version && \
   composer --version
