@@ -23,6 +23,7 @@ RUN \
     php7-mbstring=${PHP_VERSION} \
     php7-openssl=${PHP_VERSION} \
     php7-phar=${PHP_VERSION} \
+    php7-session=${PHP_VERSION} \
     php7-zip=${PHP_VERSION} \
     curl=7.80.0-r1 \
     git=2.34.2-r0 \
