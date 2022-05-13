@@ -5,7 +5,7 @@ release: export COMPOSE_FILE=docker-compose.release.yml
 
 .PHONY: build
 build:
-	docker compose build
+	docker compose build --pull
 
 .PHONY: test.build
 test.build:
