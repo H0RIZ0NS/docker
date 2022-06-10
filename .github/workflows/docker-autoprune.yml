@@ -1,0 +1,20 @@
+name: Docker image pruning
+
+on:
+  workflow_dispatch: ~
+  schedule:
+    - cron: '0 0 * * *'
+
+concurrency:
+  group: docker-autoprune
+  cancel-in-progress: true
+
+jobs:
+  docker-autoprune:
+    uses: H0RIZ0NS/.github/.github/workflows/docker-auto-prune.yml@master
+    with:
+      owner_name: H0RIZ0NS
+      owner_type: org
+      packages: '["php", "node"]'
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}

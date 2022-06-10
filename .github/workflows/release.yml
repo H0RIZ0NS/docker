@@ -17,8 +17,8 @@ concurrency:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-20.04
     if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-20.04
     permissions:
       contents: read
       packages: write
