@@ -11,6 +11,7 @@ concurrency:
 
 jobs:
   prune-docker-images:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
     steps:
       - uses: H0RIZ0NS/action-docker-prune@master
