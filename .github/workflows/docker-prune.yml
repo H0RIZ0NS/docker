@@ -1,0 +1,19 @@
+name: Docker image pruning
+
+on:
+  workflow_dispatch: ~
+  schedule:
+    - cron: '0 0 * * *'
+
+concurrency:
+  group: docker-prune
+  cancel-in-progress: true
+
+jobs:
+  prune-docker-images:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: H0RIZ0NS/action-docker-prune@master
+        with:
+          repository: ${{ github.repository }}
+          gh_token: ${{ secrets.GH_TOKEN }}
