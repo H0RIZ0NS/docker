@@ -2,14 +2,13 @@ name: Release
 
 on:
   workflow_dispatch: ~
-  push:
+  workflow_run:
     branches:
       - master
-    paths:
-      - docker-compose.release.yml
-      - Makefile
-      - php/**
-      - node/**
+    workflows:
+      - Tests and QA checks
+    types:
+      - completed
 
 concurrency:
   group: release
@@ -17,7 +16,7 @@ concurrency:
 
 jobs:
   build-and-push:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' && (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-20.04
     permissions:
       contents: read

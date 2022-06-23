@@ -1,9 +1,7 @@
 name: Tests and QA checks
 
 on:
-  push:
-    branches-ignore:
-      - master
+  push: ~
 
 concurrency:
   group: test--${{ github.ref }}
