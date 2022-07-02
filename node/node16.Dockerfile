@@ -9,7 +9,7 @@ RUN \
   apk add --no-cache \
     nodejs=16.14.2-r0 \
     npm=8.1.3-r0 \
-    curl=7.80.0-r1 \
+    curl=7.80.0-r2 \
     git=2.34.2-r0 \
     gzip=1.12-r0 \
     tar=1.34-r0 \

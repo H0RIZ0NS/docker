@@ -24,8 +24,9 @@ RUN \
     php7-openssl=${PHP_VERSION} \
     php7-phar=${PHP_VERSION} \
     php7-session=${PHP_VERSION} \
+    php7-tokenizer=${PHP_VERSION} \
     php7-zip=${PHP_VERSION} \
-    curl=7.80.0-r1 \
+    curl=7.80.0-r2 \
     git=2.34.2-r0 \
     gzip=1.12-r0 \
     tar=1.34-r0 \
