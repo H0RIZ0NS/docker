@@ -7,13 +7,13 @@ LABEL \
 
 RUN \
   apk add --no-cache \
-    nodejs=16.16.0-r0 \
-    npm=8.1.3-r0 \
     curl=7.80.0-r2 \
     git=2.34.4-r0 \
     gzip=1.12-r0 \
     tar=1.34-r0 \
-    unzip=6.0-r9
+    unzip=6.0-r9 \
+    nodejs=16.16.0-r0 \
+    npm=8.1.3-r0
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 
