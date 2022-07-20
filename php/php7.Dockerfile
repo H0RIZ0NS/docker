@@ -15,9 +15,15 @@ ENV PHP_VERSION=7.4.30-r0
 
 RUN \
   apk add --no-cache \
+    curl=7.80.0-r2 \
+    git=2.34.4-r0 \
+    gzip=1.12-r0 \
+    tar=1.34-r0 \
+    unzip=6.0-r9 \
     php7=${PHP_VERSION} \
     php7-fpm=${PHP_VERSION} \
     php7-curl=${PHP_VERSION} \
+    php7-gd=${PHP_VERSION} \
     php7-iconv=${PHP_VERSION} \
     php7-json=${PHP_VERSION} \
     php7-mbstring=${PHP_VERSION} \
@@ -25,12 +31,7 @@ RUN \
     php7-phar=${PHP_VERSION} \
     php7-session=${PHP_VERSION} \
     php7-tokenizer=${PHP_VERSION} \
-    php7-zip=${PHP_VERSION} \
-    curl=7.80.0-r2 \
-    git=2.34.4-r0 \
-    gzip=1.12-r0 \
-    tar=1.34-r0 \
-    unzip=6.0-r9
+    php7-zip=${PHP_VERSION}
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
