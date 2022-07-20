@@ -4,14 +4,14 @@ FROM composer:2.3.5 AS composer
 
 ########################################################################
 
-FROM alpine:3.15.4
+FROM alpine:3.15.5
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter <dev@fabschurt.com>" \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
 
-ENV PHP_VERSION=7.4.29-r0
+ENV PHP_VERSION=7.4.30-r0
 
 RUN \
   apk add --no-cache \
@@ -27,7 +27,7 @@ RUN \
     php7-tokenizer=${PHP_VERSION} \
     php7-zip=${PHP_VERSION} \
     curl=7.80.0-r2 \
-    git=2.34.2-r0 \
+    git=2.34.4-r0 \
     gzip=1.12-r0 \
     tar=1.34-r0 \
     unzip=6.0-r9
