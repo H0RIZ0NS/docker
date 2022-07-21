@@ -23,7 +23,6 @@ RUN \
     php7=${PHP_VERSION} \
     php7-fpm=${PHP_VERSION} \
     php7-curl=${PHP_VERSION} \
-    php7-gd=${PHP_VERSION} \
     php7-iconv=${PHP_VERSION} \
     php7-json=${PHP_VERSION} \
     php7-mbstring=${PHP_VERSION} \
