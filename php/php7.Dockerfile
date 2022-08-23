@@ -11,7 +11,7 @@ LABEL \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
 
-ENV PHP_VERSION=7.4.30-r0
+ENV PHP_VERSION="7.4.30-r0"
 
 RUN \
   apk add --no-cache \
