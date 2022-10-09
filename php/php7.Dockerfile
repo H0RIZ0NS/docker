@@ -4,14 +4,14 @@ FROM composer:2.4.1 AS composer
 
 ########################################################################
 
-FROM alpine:3.15.5
+FROM alpine:3.15.6
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter <dev@fabschurt.com>" \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
 
-ENV PHP_VERSION="7.4.30-r0"
+ENV PHP_VERSION="7.4.32-r0"
 
 RUN \
   apk add --no-cache \
