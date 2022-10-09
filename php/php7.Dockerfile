@@ -4,33 +4,31 @@ FROM composer:2.4.1 AS composer
 
 ########################################################################
 
-FROM alpine:3.15.5
+FROM alpine:3.15.6
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter <dev@fabschurt.com>" \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.source="https://github.com/H0RIZ0NS/docker"
 
-ENV PHP_VERSION="7.4.30-r0"
-
 RUN \
   apk add --no-cache \
-    curl=7.80.0-r3 \
-    git=2.34.4-r0 \
-    gzip=1.12-r0 \
-    tar=1.34-r0 \
-    unzip=6.0-r9 \
-    php7=${PHP_VERSION} \
-    php7-fpm=${PHP_VERSION} \
-    php7-curl=${PHP_VERSION} \
-    php7-iconv=${PHP_VERSION} \
-    php7-json=${PHP_VERSION} \
-    php7-mbstring=${PHP_VERSION} \
-    php7-openssl=${PHP_VERSION} \
-    php7-phar=${PHP_VERSION} \
-    php7-session=${PHP_VERSION} \
-    php7-tokenizer=${PHP_VERSION} \
-    php7-zip=${PHP_VERSION}
+    curl \
+    git \
+    gzip \
+    tar \
+    unzip \
+    php7 \
+    php7-fpm \
+    php7-curl \
+    php7-iconv \
+    php7-json \
+    php7-mbstring \
+    php7-openssl \
+    php7-phar \
+    php7-session \
+    php7-tokenizer \
+    php7-zip
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
