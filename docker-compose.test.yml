@@ -23,7 +23,7 @@ services:
 
   php7-test:
     build:
-      dockerfile: _tests/php7.Dockerfile
+      dockerfile: tests/php7.Dockerfile
     image: tests/php:7-test
     network_mode: none
     deploy:
@@ -32,7 +32,7 @@ services:
 
   node16-test:
     build:
-      dockerfile: _tests/node16.Dockerfile
+      dockerfile: tests/node16.Dockerfile
     image: tests/node:16-test
     network_mode: none
     deploy:
