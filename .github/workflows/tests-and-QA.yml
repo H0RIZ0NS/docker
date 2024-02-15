@@ -1,10 +1,10 @@
-name: Tests and QA checks
+name: tests-and-QA
 
 on:
   push: ~
 
 concurrency:
-  group: test--${{ github.ref }}
+  group: tests-and-QA--${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

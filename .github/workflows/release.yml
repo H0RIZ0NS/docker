@@ -1,12 +1,10 @@
-name: Release
-
 on:
   workflow_dispatch: ~
   workflow_run:
     branches:
       - master
     workflows:
-      - Tests and QA checks
+      - tests-and-QA
     types:
       - completed
 

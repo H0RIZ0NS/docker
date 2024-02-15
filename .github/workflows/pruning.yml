@@ -1,16 +1,14 @@
-name: Docker image pruning
-
 on:
   workflow_dispatch: ~
   schedule:
     - cron: 0 0 * * *
 
 concurrency:
-  group: docker-prune
+  group: pruning
   cancel-in-progress: true
 
 jobs:
-  prune-docker-images:
+  prune-untagged-docker-images:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
     steps:
