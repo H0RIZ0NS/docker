@@ -1,4 +1,4 @@
-version: '2.4'
+name: docker-images
 
 services:
   php7-base:

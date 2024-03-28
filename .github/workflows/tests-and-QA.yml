@@ -4,13 +4,12 @@ on:
   push: ~
 
 concurrency:
-  group: tests-and-QA--${{ github.ref }}
+  group: tests-and-QA_${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - run: make test.build
-      - run: make test.run
+      - uses: actions/checkout@v4
+      - run: make test

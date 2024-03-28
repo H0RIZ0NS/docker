@@ -1,5 +1,8 @@
+name: release
+
 on:
   workflow_dispatch: ~
+
   workflow_run:
     branches:
       - master
@@ -15,19 +18,19 @@ concurrency:
 jobs:
   build-and-push:
     if: github.ref == 'refs/heads/master' && (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: master
 
-      - uses: docker/login-action@v1
+      - uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
       - run: make release

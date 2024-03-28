@@ -1,11 +1,17 @@
 export SHELL := /usr/bin/env bash -Eeu -o pipefail
 
 test.build test.run: export COMPOSE_FILE=docker-compose.test.yml
-release: export COMPOSE_FILE=docker-compose.release.yml
+release: export \
+	COMPOSE_FILE=docker-compose.release.yml \
+	DOCKER_IMAGE_PREFIX=${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAMESPACE}
 
 .PHONY: build
 build:
 	docker compose build
+
+.PHONY: test
+.NOTPARALLEL: test
+test: test.build test.run
 
 .PHONY: test.build
 test.build:

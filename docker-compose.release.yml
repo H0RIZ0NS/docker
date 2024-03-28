@@ -1,11 +1,11 @@
-version: '2.4'
+name: docker-images
 
 services:
   php7:
     build:
       context: php
       dockerfile: php7.Dockerfile
-    image: ghcr.io/h0riz0ns/php:7-onbuild
+    image: ${DOCKER_IMAGE_PREFIX}/php:7-onbuild
     network_mode: none
     deploy:
       replicas: 0
@@ -14,7 +14,7 @@ services:
     build:
       context: node
       dockerfile: node16.Dockerfile
-    image: ghcr.io/h0riz0ns/node:16-onbuild
+    image: ${DOCKER_IMAGE_PREFIX}/node:16-onbuild
     network_mode: none
     deploy:
       replicas: 0
