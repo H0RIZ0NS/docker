@@ -4,7 +4,7 @@ FROM composer:2.7.2 AS composer
 
 ########################################################################
 
-FROM alpine:3.15.11 as release
+FROM alpine:3.19.1 as release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -22,25 +22,26 @@ RUN \
     openssl \
     tar \
     unzip \
-    php7 \
-    php7-fpm \
-    php7-curl \
-    php7-iconv \
-    php7-json \
-    php7-mbstring \
-    php7-openssl \
-    php7-phar \
-    php7-session \
-    php7-tokenizer \
-    php7-zip
+    php83 \
+    php83-fpm \
+    php83-curl \
+    php83-iconv \
+    php83-json \
+    php83-mbstring \
+    php83-openssl \
+    php83-phar \
+    php83-session \
+    php83-tokenizer \
+    php83-zip
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN \
-  rm /etc/php7/php-fpm.d/* && \
-  ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm
+  rm /etc/php83/php-fpm.d/* && \
+  ln -s /usr/bin/php83 /usr/bin/php && \
+  ln -s /usr/sbin/php-fpm83 /usr/sbin/php-fpm
 
-COPY config/* /etc/php7/
+COPY config/* /etc/php83/
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 

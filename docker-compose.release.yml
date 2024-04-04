@@ -1,20 +1,29 @@
-version: '2.4'
+x-stateless: &stateless
+  network_mode: none
+  deploy:
+    replicas: 0
 
 services:
   php7:
+    image: ${DOCKER_IMAGE_PREFIX}/php:7-onbuild
     build:
       context: php
       dockerfile: php7.Dockerfile
-    image: ghcr.io/h0riz0ns/php:7-onbuild
-    network_mode: none
-    deploy:
-      replicas: 0
+      target: release
+    <<: *stateless
 
-  node16:
+  php8:
+    image: ${DOCKER_IMAGE_PREFIX}/php:8-onbuild
+    build:
+      context: php
+      dockerfile: php8.Dockerfile
+      target: release
+    <<: *stateless
+
+  node20:
+    image: ${DOCKER_IMAGE_PREFIX}/node:20-onbuild
     build:
       context: node
-      dockerfile: node16.Dockerfile
-    image: ghcr.io/h0riz0ns/node:16-onbuild
-    network_mode: none
-    deploy:
-      replicas: 0
+      dockerfile: node20.Dockerfile
+      target: release
+    <<: *stateless
