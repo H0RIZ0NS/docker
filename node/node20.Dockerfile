@@ -1,6 +1,6 @@
 ########################################################################
 
-FROM alpine:3.19.1 as release
+FROM alpine:3.20.0 as release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
