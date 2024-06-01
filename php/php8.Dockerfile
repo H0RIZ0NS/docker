@@ -1,10 +1,10 @@
 ########################################################################
 
-FROM composer:2.7.2 AS composer
+FROM composer:2.7.6 AS composer
 
 ########################################################################
 
-FROM alpine:3.19.1 as release
+FROM alpine:3.20.0 as release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -24,6 +24,7 @@ RUN \
     unzip \
     php83 \
     php83-fpm \
+    php83-ctype \
     php83-curl \
     php83-iconv \
     php83-json \
@@ -38,7 +39,6 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN \
   rm /etc/php83/php-fpm.d/* && \
-  ln -s /usr/bin/php83 /usr/bin/php && \
   ln -s /usr/sbin/php-fpm83 /usr/sbin/php-fpm
 
 COPY config/* /etc/php83/

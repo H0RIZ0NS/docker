@@ -1,6 +1,6 @@
 ########################################################################
 
-FROM composer:2.7.2 AS composer
+FROM composer:2.7.6 AS composer
 
 ########################################################################
 
@@ -24,6 +24,7 @@ RUN \
     unzip \
     php7 \
     php7-fpm \
+    php7-ctype \
     php7-curl \
     php7-iconv \
     php7-json \
