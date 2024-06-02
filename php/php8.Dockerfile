@@ -27,6 +27,7 @@ RUN \
     php83-ctype \
     php83-curl \
     php83-iconv \
+    php83-intl \
     php83-json \
     php83-mbstring \
     php83-openssl \
