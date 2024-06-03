@@ -1,21 +1,21 @@
 services:
   php7.test:
     extends:
-      file: docker-compose.release.yml
+      file: docker-compose.release.yaml
       service: php7
     build:
       target: test
 
   php8.test:
     extends:
-      file: docker-compose.release.yml
+      file: docker-compose.release.yaml
       service: php8
     build:
       target: test
 
   node20.test:
     extends:
-      file: docker-compose.release.yml
+      file: docker-compose.release.yaml
       service: node20
     build:
       target: test
