@@ -7,7 +7,7 @@ services:
   php7:
     image: ${DOCKER_IMAGE_PREFIX}/php:7-onbuild
     build:
-      context: php
+      context: src/php
       dockerfile: php7.Dockerfile
       target: release
     <<: *stateless
@@ -15,7 +15,7 @@ services:
   php8:
     image: ${DOCKER_IMAGE_PREFIX}/php:8-onbuild
     build:
-      context: php
+      context: src/php
       dockerfile: php8.Dockerfile
       target: release
     <<: *stateless
@@ -23,7 +23,7 @@ services:
   node20:
     image: ${DOCKER_IMAGE_PREFIX}/node:20-onbuild
     build:
-      context: node
+      context: src/node
       dockerfile: node20.Dockerfile
       target: release
     <<: *stateless

@@ -1,10 +1,10 @@
 ########################################################################
 
-FROM composer:2.7.6 AS composer
+FROM composer:2.7 AS composer
 
 ########################################################################
 
-FROM alpine:3.20.0 as release
+FROM alpine:3.20 AS release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -61,7 +61,7 @@ ONBUILD USER php
 
 ########################################################################
 
-FROM release as test
+FROM release AS test
 
 CMD \
   set -x && \
