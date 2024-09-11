@@ -23,6 +23,10 @@ jobs:
       DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
       DOCKER_IMAGE_NAMESPACE: ${{ vars.DOCKER_IMAGE_NAMESPACE }}
     steps:
+      - uses: ndeloof/install-compose-action@main
+        with:
+          version: v2.29.2
+
       - uses: actions/checkout@v4
         with:
           ref: main

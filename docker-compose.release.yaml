@@ -5,7 +5,7 @@ x-stateless: &stateless
 
 services:
   php7:
-    image: ${DOCKER_IMAGE_PREFIX}/php:7-onbuild
+    image: ${DOCKER_IMAGE_PREFIX?:}/php:7-onbuild
     build:
       context: src/php
       dockerfile: php7.Dockerfile
@@ -13,7 +13,7 @@ services:
     <<: *stateless
 
   php8:
-    image: ${DOCKER_IMAGE_PREFIX}/php:8-onbuild
+    image: ${DOCKER_IMAGE_PREFIX?:}/php:8-onbuild
     build:
       context: src/php
       dockerfile: php8.Dockerfile
@@ -21,7 +21,7 @@ services:
     <<: *stateless
 
   node20:
-    image: ${DOCKER_IMAGE_PREFIX}/node:20-onbuild
+    image: ${DOCKER_IMAGE_PREFIX?:}/node:20-onbuild
     build:
       context: src/node
       dockerfile: node20.Dockerfile

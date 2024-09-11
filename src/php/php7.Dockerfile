@@ -1,10 +1,10 @@
 ########################################################################
 
-FROM composer:2.7 AS composer
+FROM composer:2.7.9 AS composer
 
 ########################################################################
 
-FROM alpine:3.15 AS release
+FROM alpine:3.15.11 AS release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -45,19 +45,22 @@ RUN \
 COPY config/* /etc/php7/
 
 ONBUILD ARG RUNTIME_USER_ID=1000
+ONBUILD ARG RUNTIME_USER_NAME=php
+ONBUILD ARG RUNTIME_DIR=/opt/app
+ONBUILD ARG PHP_SESSION_DIR=/var/lib/php/sessions
 
 ONBUILD RUN \
-  adduser -u ${RUNTIME_USER_ID} -D -s /sbin/nologin php && \
+  adduser -u "$RUNTIME_USER_ID" -D -s /sbin/nologin "$RUNTIME_USER_NAME" && \
   mkdir -p \
-    /opt/app \
-    /var/lib/php/sessions \
+    "$RUNTIME_DIR" \
+    "$PHP_SESSION_DIR" \
   && \
-  chown -R php:php \
-    /opt/app \
-    /var/lib/php/sessions
+  chown -R "${RUNTIME_USER_NAME}:${RUNTIME_USER_NAME}" \
+    "$RUNTIME_DIR" \
+    "$PHP_SESSION_DIR"
 
-ONBUILD WORKDIR /opt/app
-ONBUILD USER php
+ONBUILD WORKDIR "$RUNTIME_DIR"
+ONBUILD USER "$RUNTIME_USER_NAME"
 
 ########################################################################
 

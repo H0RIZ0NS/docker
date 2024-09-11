@@ -1,6 +1,6 @@
 ########################################################################
 
-FROM alpine:3.20 as release
+FROM alpine:3.20.3 AS release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -20,18 +20,20 @@ RUN \
     npm
 
 ONBUILD ARG RUNTIME_USER_ID=1000
+ONBUILD ARG RUNTIME_USER_NAME=node
+ONBUILD ARG RUNTIME_DIR=/opt/app
 
 ONBUILD RUN \
-  adduser -u ${RUNTIME_USER_ID} -D -s /sbin/nologin node && \
-  mkdir /opt/app && \
-  chown -R node:node /opt/app
+  adduser -u "$RUNTIME_USER_ID" -D -s /sbin/nologin "$RUNTIME_USER_NAME" && \
+  mkdir "$RUNTIME_DIR" && \
+  chown -R "${RUNTIME_USER_NAME}:${RUNTIME_USER_NAME}" "$RUNTIME_DIR"
 
-ONBUILD WORKDIR /opt/app
-ONBUILD USER node
+ONBUILD WORKDIR "$RUNTIME_DIR"
+ONBUILD USER "$RUNTIME_USER_NAME"
 
 ########################################################################
 
-FROM release as test
+FROM release AS test
 
 CMD \
   set -x && \
