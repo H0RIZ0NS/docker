@@ -27,3 +27,19 @@ services:
       dockerfile: node20.Dockerfile
       target: release
     <<: *stateless
+
+  python3:
+    image: ${DOCKER_IMAGE_PREFIX?:}/python:3-onbuild
+    build:
+      context: src/python
+      dockerfile: python3.Dockerfile
+      target: release
+    <<: *stateless
+
+  ruby3:
+    image: ${DOCKER_IMAGE_PREFIX?:}/ruby:3-onbuild
+    build:
+      context: src/ruby
+      dockerfile: ruby3.Dockerfile
+      target: release
+    <<: *stateless
