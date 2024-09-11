@@ -19,3 +19,17 @@ services:
       service: node20
     build:
       target: test
+
+  python3.test:
+    extends:
+      file: docker-compose.release.yaml
+      service: python3
+    build:
+      target: test
+
+  ruby3.test:
+    extends:
+      file: docker-compose.release.yaml
+      service: ruby3
+    build:
+      target: test
