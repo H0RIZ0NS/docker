@@ -21,8 +21,6 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       COMPOSE_ENV_FILES: .env.release
-      DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
-      DOCKER_IMAGE_NAMESPACE: ${{ vars.DOCKER_IMAGE_NAMESPACE }}
     steps:
       - uses: ndeloof/install-compose-action@main
         with:
@@ -39,3 +37,6 @@ jobs:
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
       - run: make release
+        env:
+          DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
+          DOCKER_IMAGE_NAMESPACE: ${{ vars.DOCKER_IMAGE_NAMESPACE }}
