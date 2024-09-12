@@ -9,6 +9,7 @@ LABEL \
 
 RUN \
   apk add --no-cache \
+    build-base \
     ca-certificates \
     curl \
     git \
@@ -17,11 +18,14 @@ RUN \
     tar \
     unzip \
     ruby-full \
+    ruby-dev \
     ruby-doc
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 ONBUILD ARG RUNTIME_USER_NAME=ruby
 ONBUILD ARG RUNTIME_DIR=/opt/app
+
+ONBUILD ENV BUNDLE_PATH="${RUNTIME_DIR}/vendor/bundle"
 
 ONBUILD RUN \
   adduser -u "$RUNTIME_USER_ID" -D -s /sbin/nologin "$RUNTIME_USER_NAME" && \
