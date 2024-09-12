@@ -20,6 +20,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-22.04
     env:
+      COMPOSE_ENV_FILES: .env.release
       DOCKER_REGISTRY: ${{ vars.DOCKER_REGISTRY }}
       DOCKER_IMAGE_NAMESPACE: ${{ vars.DOCKER_IMAGE_NAMESPACE }}
     steps:
