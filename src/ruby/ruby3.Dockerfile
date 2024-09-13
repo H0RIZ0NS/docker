@@ -9,7 +9,6 @@ LABEL \
 
 RUN \
   apk add --no-cache \
-    build-base \
     ca-certificates \
     curl \
     git \
@@ -18,8 +17,9 @@ RUN \
     tar \
     unzip \
     ruby \
-    ruby-dev \
     ruby-doc \
+    ruby-rdoc \
+    ruby-rake \
     ruby-bundler
 
 ONBUILD ARG RUNTIME_USER_ID=1000
@@ -47,6 +47,7 @@ CMD \
   [ "$(pwd)" = '/opt/app' ] && \
   ruby --version && \
   irb --version && \
+  rake --version && \
   gem --version && \
   bundler --version
 
