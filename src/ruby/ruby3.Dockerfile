@@ -17,9 +17,10 @@ RUN \
     openssl \
     tar \
     unzip \
-    ruby-full \
+    ruby \
     ruby-dev \
-    ruby-doc
+    ruby-doc \
+    ruby-bundler
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 ONBUILD ARG RUNTIME_USER_NAME="ruby"
