@@ -1,10 +1,10 @@
 ########################################################################
 
-FROM composer:2.7.9 AS composer
+FROM composer:2.10.3 AS composer
 
 ########################################################################
 
-FROM alpine:3.20.3 AS release
+FROM alpine:3.24.2 AS release
 
 LABEL \
   org.opencontainers.image.authors="Fabien Schurter" \
@@ -22,27 +22,27 @@ RUN \
     openssl \
     tar \
     unzip \
-    php83 \
-    php83-fpm \
-    php83-ctype \
-    php83-curl \
-    php83-iconv \
-    php83-intl \
-    php83-json \
-    php83-mbstring \
-    php83-openssl \
-    php83-phar \
-    php83-session \
-    php83-tokenizer \
-    php83-zip
+    php85 \
+    php85-fpm \
+    php85-ctype \
+    php85-curl \
+    php85-iconv \
+    php85-intl \
+    php85-json \
+    php85-mbstring \
+    php85-openssl \
+    php85-phar \
+    php85-session \
+    php85-tokenizer \
+    php85-zip
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN \
-  rm /etc/php83/php-fpm.d/* && \
-  ln -s /usr/sbin/php-fpm83 /usr/sbin/php-fpm
+  rm /etc/php85/php-fpm.d/* && \
+  ln -s /usr/sbin/php-fpm85 /usr/sbin/php-fpm
 
-COPY config/* /etc/php83/
+COPY config/* /etc/php85/
 
 ONBUILD ARG RUNTIME_USER_ID=1000
 ONBUILD ARG RUNTIME_USER_NAME="php"

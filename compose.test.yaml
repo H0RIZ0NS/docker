@@ -1,33 +1,33 @@
 services:
-  php7.test:
+  php7:
     extends:
       file: compose.release.yaml
       service: php7
     build:
       target: test
 
-  php8.test:
+  php8:
     extends:
       file: compose.release.yaml
       service: php8
     build:
       target: test
 
-  node20.test:
+  node20:
     extends:
       file: compose.release.yaml
       service: node20
     build:
       target: test
 
-  python3.test:
+  python3:
     extends:
       file: compose.release.yaml
       service: python3
     build:
       target: test
 
-  ruby3.test:
+  ruby3:
     extends:
       file: compose.release.yaml
       service: ruby3

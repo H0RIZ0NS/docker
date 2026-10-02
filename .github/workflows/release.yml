@@ -18,19 +18,15 @@ concurrency:
 jobs:
   build-and-push:
     if: github.ref == 'refs/heads/main' && (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-26.04
     env:
       COMPOSE_ENV_FILES: .env.release
     steps:
-      - uses: ndeloof/install-compose-action@main
-        with:
-          version: v2.29.2
-
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
 
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ${{ vars.DOCKER_REGISTRY }}
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
